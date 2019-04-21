@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TwoCardPoker
 {
-    public class Deck
+    public class Deck : IDeck
     {
         private const short NUMBER_OF_CARDS = 52;
 

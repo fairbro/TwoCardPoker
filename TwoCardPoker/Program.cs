@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace TwoCardPoker
 {
@@ -11,6 +12,16 @@ namespace TwoCardPoker
 
         static void Main(string[] args)
         {
+            //Dependency Injection
+            var serviceProvider = new ServiceCollection()
+            .AddSingleton<IGame, Game>()
+            .AddSingleton<IDeck, Deck>()
+            .BuildServiceProvider();
+
+            var bar = serviceProvider.GetService<IGame>();
+
+            //var game = new Game();
+
             Console.WriteLine("Welcome to 2 Card Poker Challenge!");
 
             ushort numberOfPlayers = GetUserInput("Please enter number of players (2-6):", MIN_NUMBER_OF_PLAYERS, MAX_NUMBER_OF_PLAYERS);
