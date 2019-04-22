@@ -6,5 +6,6 @@ namespace TwoCardPoker
     {
         Suit Suit { get; }
         Value Value { get; }
+        int CompareTo(ICard card);
     }
 }
