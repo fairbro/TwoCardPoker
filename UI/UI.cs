@@ -17,7 +17,7 @@ namespace UserInterface
             Console.WriteLine(message);
         }
 
-        public ushort GetUserInput(string message, ushort min, ushort max)
+        public ushort GetNumericInput(string message, ushort min, ushort max)
         {
             while (true)
             {

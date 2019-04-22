@@ -7,7 +7,7 @@ namespace UserInterface
 
         void ShowMessage(string message);
 
-        ushort GetUserInput(string message, ushort min, ushort max);
+        ushort GetNumericInput(string message, ushort min, ushort max);
 
         void WaitForNextCommand();
     }

@@ -30,13 +30,13 @@ namespace TwoCardPoker
 
         public ushort GetNumberOfPlayers()
         {
-            return _ui.GetUserInput("Please enter number of players (2-6):",
+            return _ui.GetNumericInput("Please enter number of players (2-6):",
                 MIN_NUMBER_OF_PLAYERS, MAX_NUMBER_OF_PLAYERS);
         }
 
         public ushort GetNumberOfRounds()
         {
-            return _ui.GetUserInput("Please enter number of rounds (2-5):",
+            return _ui.GetNumericInput("Please enter number of rounds (2-5):",
                 MIN_NUMBER_OF_ROUNDS, MAX_NUMBER_OF_ROUNDS);
         }
 

@@ -29,7 +29,7 @@ namespace TwoCardPokerTests
             var mockDealer = new Mock<IDealer>();
             var mockUI = new Mock<IUI>();
 
-            mockUI.Setup(x => x.GetUserInput("Please enter number of players (2-6):", It.IsAny<ushort>(), It.IsAny<ushort>())).Returns(3);
+            mockUI.Setup(x => x.GetNumericInput("Please enter number of players (2-6):", It.IsAny<ushort>(), It.IsAny<ushort>())).Returns(3);
 
             var game = new Game(mockDealer.Object, mockUI.Object);
 
@@ -37,7 +37,7 @@ namespace TwoCardPokerTests
 
             Assert.Equal(3, numberOfPlayers);
 
-            mockUI.Setup(x => x.GetUserInput("Please enter number of players (2-6):", It.IsAny<ushort>(), It.IsAny<ushort>()));
+            mockUI.Setup(x => x.GetNumericInput("Please enter number of players (2-6):", It.IsAny<ushort>(), It.IsAny<ushort>()));
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace TwoCardPokerTests
             var mockDealer = new Mock<IDealer>();
             var mockUI = new Mock<IUI>();
 
-            mockUI.Setup(x => x.GetUserInput("Please enter number of rounds (2-5):", It.IsAny<ushort>(), It.IsAny<ushort>())).Returns(3);
+            mockUI.Setup(x => x.GetNumericInput("Please enter number of rounds (2-5):", It.IsAny<ushort>(), It.IsAny<ushort>())).Returns(3);
 
             var game = new Game(mockDealer.Object, mockUI.Object);
 
@@ -54,7 +54,7 @@ namespace TwoCardPokerTests
 
             Assert.Equal(3, numberOfRounds);
 
-            mockUI.Setup(x => x.GetUserInput("Please enter number of rounds (2-5):", It.IsAny<ushort>(), It.IsAny<ushort>()));
+            mockUI.Setup(x => x.GetNumericInput("Please enter number of rounds (2-5):", It.IsAny<ushort>(), It.IsAny<ushort>()));
         }
     }
 }
