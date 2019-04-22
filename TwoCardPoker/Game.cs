@@ -1,4 +1,5 @@
-﻿using UserInterface;
+﻿using System.Collections.Generic;
+using UserInterface;
 
 namespace TwoCardPoker
 {
@@ -9,12 +10,13 @@ namespace TwoCardPoker
         private const ushort MIN_NUMBER_OF_ROUNDS = 2;
         private const ushort MAX_NUMBER_OF_ROUNDS = 5;
 
-        private readonly IDeck _deck;
+        private readonly IDealer _dealer;
+        private readonly IList<IPlayer> _players;
         private readonly IUI _ui;
 
-        public Game(IDeck deck, IUI ui)
+        public Game(IDealer dealer, IUI ui)
         {
-            _deck = deck;
+            _dealer = dealer;
             _ui = ui;
         }
 
@@ -30,7 +32,7 @@ namespace TwoCardPoker
             Play();
         }
 
-        public void Play()
+        private void Play()
         {
 
         }
