@@ -1,5 +1,6 @@
 ﻿
 using System;
+using TwoCardPoker.Interfaces;
 
 namespace TwoCardPoker
 {
@@ -7,7 +8,7 @@ namespace TwoCardPoker
     {
         public string Name { get; set; }
         public IHand Hand { get; set; }
-        public ushort Score { get; set; }
+        public int Score { get; set; }
 
         public Player(string name, ushort size)
         {

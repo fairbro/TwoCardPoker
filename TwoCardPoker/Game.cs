@@ -73,7 +73,11 @@ namespace TwoCardPoker
             {
                 var player = _players[i];
 
-                Console.WriteLine($"{player.Name} {player.Hand.Get(0).Suit} {player.Hand.Get(0).Value} {player.Hand.Get(1).Suit} {player.Hand.Get(1).Value} { player.Hand.GetRank() } Score: {4-i}");
+                int roundScore = 4 - i;
+
+                player.Score += roundScore;
+
+                Console.WriteLine($"{player.Name} {player.Hand.Get(0).Suit} {player.Hand.Get(0).Value} {player.Hand.Get(1).Suit} {player.Hand.Get(1).Value} { player.Hand.GetRank() } Score: {roundScore}");
             }
         }
     }

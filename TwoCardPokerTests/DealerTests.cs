@@ -1,6 +1,7 @@
 using Moq;
 using System.Collections.Generic;
 using TwoCardPoker;
+using TwoCardPoker.Interfaces;
 using Xunit;
 
 namespace TwoCardPokerTests
