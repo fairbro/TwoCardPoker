@@ -30,15 +30,22 @@ namespace TwoCardPoker
             ushort numberOfRounds = GetUserInput("Please enter number of rounds (2-5):", MIN_NUMBER_OF_ROUNDS, MAX_NUMBER_OF_ROUNDS);
 
             //Console.WriteLine($"NumberOfPlayers: {numberOfPlayers}, NumberOfRounds: {numberOfRounds}");
-            Play(numberOfPlayers, numberOfRounds);
+            InitialisePlayers(numberOfPlayers);
+
+            Play(numberOfRounds);
         }
 
-        private void Play(ushort numberOfPlayers, ushort numberOfRounds)
+        private void InitialisePlayers(ushort numberOfPlayers)
         {
-            for(var i=0; i< numberOfPlayers; i++)
+            for (var i = 0; i < numberOfPlayers; i++)
             {
                 _players.Add(new Player($"Player {i + 1}", HAND_SIZE));
             }
+        }
+
+        private void Play(ushort numberOfRounds)
+        {
+            
         }
 
         private ushort GetUserInput(string message, ushort min, ushort max)
