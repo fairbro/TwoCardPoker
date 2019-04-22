@@ -8,12 +8,11 @@ namespace TwoCardPoker
     public class Hand : IHand, IComparable<IHand>
     {
         private IList<ICard> _cards;
-        private ushort _maxNumberOfCards;
+        private const ushort HAND_SIZE = 2;
 
-        public Hand(ushort numberOfCards)
+        public Hand()
         {
-            _maxNumberOfCards = numberOfCards;
-            _cards = new List<ICard>(numberOfCards);
+            _cards = new List<ICard>(HAND_SIZE);
         }
 
         public ICard Get(ushort index)
@@ -69,7 +68,7 @@ namespace TwoCardPoker
 
         public void Add(ICard card)
         {
-            if (_cards.Count == _maxNumberOfCards)
+            if (_cards.Count == HAND_SIZE)
             {
                 throw new HandOverflowException("Hand already full.");
             }

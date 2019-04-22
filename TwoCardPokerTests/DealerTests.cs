@@ -11,9 +11,9 @@ namespace TwoCardPokerTests
         [Fact]
         public void Deal_EachPlayerGetsDealtCardsOffTopOfDeck()
         {
-            var player1 = new Player("Player 1", 2);
-            var player2 = new Player("Player 2", 2);
-            var player3 = new Player("Player 3", 2);
+            var player1 = new Player(new Hand(), "Player 1", 2);
+            var player2 = new Player(new Hand(), "Player 2", 2);
+            var player3 = new Player(new Hand(), "Player 3", 2);
 
             var players = new List<IPlayer>
             {

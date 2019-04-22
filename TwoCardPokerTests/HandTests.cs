@@ -10,7 +10,7 @@ namespace TwoCardPokerTests
         [Fact]
         public void Add()
         {
-            var hand = new Hand(2);
+            var hand = new Hand();
 
             hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Two));
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
@@ -24,7 +24,7 @@ namespace TwoCardPokerTests
         [Fact]
         public void Add_ThrowsExceptionIfTryingToAddTooManyCards()
         {
-            var hand = new Hand(2);
+            var hand = new Hand();
 
             hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Two));
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
@@ -38,7 +38,7 @@ namespace TwoCardPokerTests
         [Fact]
         public void Rank_IsStraightFlush_ReturnsStraightFlush()
         {
-            var hand = new Hand(2);
+            var hand = new Hand();
 
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Jack));
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
@@ -49,7 +49,7 @@ namespace TwoCardPokerTests
         [Fact]
         public void Rank_IsFlush_ReturnsFlush()
         {
-            var hand = new Hand(2);
+            var hand = new Hand();
 
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Two));
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
@@ -60,7 +60,7 @@ namespace TwoCardPokerTests
         [Fact]
         public void Rank_IsStraight_ReturnsStraight()
         {
-            var hand = new Hand(2);
+            var hand = new Hand();
 
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Jack));
             hand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen));
@@ -71,7 +71,7 @@ namespace TwoCardPokerTests
         [Fact]
         public void Rank_IsPair_ReturnsPair()
         {
-            var hand = new Hand(2);
+            var hand = new Hand();
 
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
             hand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen));
@@ -82,7 +82,7 @@ namespace TwoCardPokerTests
         [Fact]
         public void Rank_IsHighCard_ReturnsHighCard()
         {
-            var hand = new Hand(2);
+            var hand = new Hand();
 
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
             hand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Ace));
@@ -93,7 +93,7 @@ namespace TwoCardPokerTests
         [Fact]
         public void GetHighCard_FirstCardHighestValue_ReturnFirstCard()
         {
-            var hand = new Hand(2);
+            var hand = new Hand();
 
             var highCard = new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen);
             var lowCard = new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen);
@@ -109,7 +109,7 @@ namespace TwoCardPokerTests
         [Fact]
         public void GetHighCard_LastCardHighestValue_ReturnLastCard()
         {
-            var hand = new Hand(2);
+            var hand = new Hand();
 
             var lowCard = new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen);
             var highCard = new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen);
@@ -123,13 +123,13 @@ namespace TwoCardPokerTests
         [Fact]
         public void CompareTo_FirstHandHigherRank_Returns1()
         {
-            var winningHand = new Hand(2);
+            var winningHand = new Hand();
 
             winningHand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Three));
             winningHand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Two));
 
 
-            var losingHand = new Hand(2);
+            var losingHand = new Hand();
             losingHand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Ace));
             losingHand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.King));
 
@@ -139,7 +139,7 @@ namespace TwoCardPokerTests
         [Fact]
         public void Reset_RemovesCardsFromHand()
         {
-            var hand = new Hand(2);
+            var hand = new Hand();
 
             hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Three));
             hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Two));
@@ -152,7 +152,7 @@ namespace TwoCardPokerTests
         [Fact]
         public void Reset_RankCanUpateOnRedeal()
         {
-            var hand = new Hand(2);
+            var hand = new Hand();
 
             hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Three));
             hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Two));

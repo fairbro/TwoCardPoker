@@ -47,7 +47,7 @@ namespace TwoCardPoker
 
             for (var i = 0; i < numberOfPlayers; i++)
             {
-                Players.Add(new Player($"Player {i + 1}", HAND_SIZE));
+                Players.Add(new Player(new Hand(), $"Player {i + 1}", HAND_SIZE));
             }
         }
 

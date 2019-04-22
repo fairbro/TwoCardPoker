@@ -10,10 +10,10 @@ namespace TwoCardPoker
         public IHand Hand { get; set; }
         public int Score { get; set; }
 
-        public Player(string name, ushort size)
+        public Player(IHand hand, string name, ushort size)
         {
             Name = name;
-            Hand = new Hand(size);
+            Hand = hand;
         }
     }
 }

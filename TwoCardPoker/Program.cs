@@ -14,6 +14,7 @@ namespace TwoCardPoker
             .AddSingleton<IGame, Game>()
             .AddTransient<IDeck, Deck>()
             .AddTransient<IDealer, Dealer>()
+            .AddTransient<IHand, Hand>()
             .AddTransient<IUI, UI>()
             .BuildServiceProvider();
 
