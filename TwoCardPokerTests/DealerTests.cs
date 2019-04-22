@@ -41,23 +41,20 @@ namespace TwoCardPokerTests
 
             dealer.Deal(players, 2);
 
-            Assert.Equal(2, player1.Hand.Count);
-            Assert.Equal(CardTypes.Suit.Clubs, player1.Hand[0].Suit);
-            Assert.Equal(CardTypes.Value.Ace, player1.Hand[0].Value);
-            Assert.Equal(CardTypes.Suit.Hearts, player1.Hand[1].Suit);
-            Assert.Equal(CardTypes.Value.Two, player1.Hand[1].Value);
+            Assert.Equal(CardTypes.Suit.Clubs, player1.Hand.Get(0).Suit);
+            Assert.Equal(CardTypes.Value.Ace, player1.Hand.Get(0).Value);
+            Assert.Equal(CardTypes.Suit.Hearts, player1.Hand.Get(1).Suit);
+            Assert.Equal(CardTypes.Value.Two, player1.Hand.Get(1).Value);
 
-            Assert.Equal(2, player2.Hand.Count);
-            Assert.Equal(CardTypes.Suit.Diamonds, player2.Hand[0].Suit);
-            Assert.Equal(CardTypes.Value.Queen, player2.Hand[0].Value);
-            Assert.Equal(CardTypes.Suit.Spades, player2.Hand[1].Suit);
-            Assert.Equal(CardTypes.Value.King, player2.Hand[1].Value);
+            Assert.Equal(CardTypes.Suit.Diamonds, player2.Hand.Get(0).Suit);
+            Assert.Equal(CardTypes.Value.Queen, player2.Hand.Get(0).Value);
+            Assert.Equal(CardTypes.Suit.Spades, player2.Hand.Get(1).Suit);
+            Assert.Equal(CardTypes.Value.King, player2.Hand.Get(1).Value);
 
-            Assert.Equal(2, player3.Hand.Count);
-            Assert.Equal(CardTypes.Suit.Hearts, player3.Hand[0].Suit);
-            Assert.Equal(CardTypes.Value.Three, player3.Hand[0].Value);
-            Assert.Equal(CardTypes.Suit.Spades, player3.Hand[1].Suit);
-            Assert.Equal(CardTypes.Value.Nine, player3.Hand[1].Value);
+            Assert.Equal(CardTypes.Suit.Hearts, player3.Hand.Get(0).Suit);
+            Assert.Equal(CardTypes.Value.Three, player3.Hand.Get(0).Value);
+            Assert.Equal(CardTypes.Suit.Spades, player3.Hand.Get(1).Suit);
+            Assert.Equal(CardTypes.Value.Nine, player3.Hand.Get(1).Value);
         }
     }
 }

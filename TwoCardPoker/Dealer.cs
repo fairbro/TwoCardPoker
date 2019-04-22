@@ -17,7 +17,7 @@ namespace TwoCardPoker
 
             foreach(var player in players)
             {
-                for(var i=0; i<numberOfCards; i++)
+                for(var i = 0; i < numberOfCards; i++)
                 {
                     player.Hand.Add(_deck.GetCard(deckIndex));
                     deckIndex++;
