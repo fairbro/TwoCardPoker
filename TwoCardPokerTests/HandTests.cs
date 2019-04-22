@@ -20,7 +20,7 @@ namespace TwoCardPokerTests
         }
 
         [Fact]
-        public void Rand_IsStraightFlush()
+        public void IsStraightFlush()
         {
             var hand = new Hand(2);
 
@@ -31,7 +31,7 @@ namespace TwoCardPokerTests
         }
 
         [Fact]
-        public void Rand_IsFlush()
+        public void IsFlush()
         {
             var hand = new Hand(2);
 
@@ -42,7 +42,7 @@ namespace TwoCardPokerTests
         }
 
         [Fact]
-        public void Rand_IsStraight()
+        public void IsStraight()
         {
             var hand = new Hand(2);
 
@@ -53,7 +53,7 @@ namespace TwoCardPokerTests
         }
 
         [Fact]
-        public void Rand_IsPair()
+        public void IsPair()
         {
             var hand = new Hand(2);
 
@@ -61,6 +61,52 @@ namespace TwoCardPokerTests
             hand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen));
 
             Assert.True(hand.IsPair());
+        }
+
+        [Fact]
+        public void GetHighCard_FirstCardHighestValue_ReturnFirstCard()
+        {
+            var hand = new Hand(2);
+
+            var lowCard = new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen);
+            var highCard = new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen);
+
+            hand.Add(highCard);
+            hand.Add(lowCard);
+
+            var returnedCard = hand.GetHighCard();
+
+            Assert.Same(highCard, returnedCard);
+        }
+
+        [Fact]
+        public void GetHighCard_LastCardHighestValue_ReturnLastCard()
+        {
+            var hand = new Hand(2);
+
+            var lowCard = new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen);
+            var highCard = new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen);
+            
+            hand.Add(lowCard);
+            hand.Add(highCard);
+
+            Assert.Same(highCard, hand.GetHighCard());
+        }
+
+        [Fact]
+        public void CompareTo_BothStraightFlushs_HighestRankedSuitWins()
+        {
+            var winningHand = new Hand(2);
+
+            winningHand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Three));
+            winningHand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Two));
+
+
+            var losingHand = new Hand(2);
+            losingHand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Ace));
+            losingHand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.King));
+
+            Assert.Equal(-1, winningHand.CompareTo(losingHand));
         }
 
         //[Theory]
