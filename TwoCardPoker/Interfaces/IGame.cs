@@ -1,7 +1,8 @@
-﻿namespace TwoCardPoker
+﻿namespace TwoCardPoker.Interfaces
 {
     public interface IGame
     {
-        void Run();
+        void ShowIntro();
+        void GetUserInput();
     }
 }

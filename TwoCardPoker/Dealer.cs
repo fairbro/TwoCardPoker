@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TwoCardPoker.Interfaces;
 
 namespace TwoCardPoker
 {

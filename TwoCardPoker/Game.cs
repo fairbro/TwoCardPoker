@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using TwoCardPoker.Interfaces;
 using UserInterface;
 
 namespace TwoCardPoker
@@ -23,10 +23,13 @@ namespace TwoCardPoker
             _ui = ui;
         }
 
-        public void Run()
+        public void ShowIntro()
         {
             _ui.ShowMessage("Welcome to 2 Card Poker Challenge!");
+        }
 
+        public void GetUserInput()
+        {
             ushort numberOfPlayers = GetUserInput("Please enter number of players (2-6):", MIN_NUMBER_OF_PLAYERS, MAX_NUMBER_OF_PLAYERS);
 
             ushort numberOfRounds = GetUserInput("Please enter number of rounds (2-5):", MIN_NUMBER_OF_ROUNDS, MAX_NUMBER_OF_ROUNDS);
@@ -53,6 +56,7 @@ namespace TwoCardPoker
                 Console.WriteLine($"Round {i + 1}");
                 PlayRound();
                 Console.WriteLine();
+                Console.ReadKey();
             }
         }
 

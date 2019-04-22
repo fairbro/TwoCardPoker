@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using TwoCardPoker.Interfaces;
 using UserInterface;
 
 namespace TwoCardPoker
@@ -18,7 +19,8 @@ namespace TwoCardPoker
 
             var game = serviceProvider.GetService<IGame>();
 
-            game.Run();
+            game.ShowIntro();
+            game.GetUserInput();
 
             Console.ReadKey();
         }
