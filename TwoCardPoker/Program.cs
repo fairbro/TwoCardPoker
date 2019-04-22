@@ -20,7 +20,14 @@ namespace TwoCardPoker
             var game = serviceProvider.GetService<IGame>();
 
             game.ShowIntro();
-            game.GetUserInput();
+
+            var numberOfPlayers = game.GetNumberOfPlayers();
+
+            var numberOfRounds = game.GetNumberOfRounds();
+
+            game.InitialisePlayers(numberOfPlayers);
+
+            game.PlayRounds(numberOfRounds);
 
             Console.ReadKey();
         }

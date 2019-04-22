@@ -12,6 +12,7 @@ namespace TwoCardPoker
         private const ushort MIN_NUMBER_OF_ROUNDS = 2;
         private const ushort MAX_NUMBER_OF_ROUNDS = 5;
         private const ushort HAND_SIZE = 2;
+        private const ushort NUMBER_OF_SHUFFLES_PER_DEAL = 10;
 
         private readonly IDealer _dealer;
         private List<IPlayer> _players;
@@ -28,18 +29,19 @@ namespace TwoCardPoker
             _ui.ShowMessage("Welcome to 2 Card Poker Challenge!");
         }
 
-        public void GetUserInput()
+        public ushort GetNumberOfPlayers()
         {
-            ushort numberOfPlayers = GetUserInput("Please enter number of players (2-6):", MIN_NUMBER_OF_PLAYERS, MAX_NUMBER_OF_PLAYERS);
-
-            ushort numberOfRounds = GetUserInput("Please enter number of rounds (2-5):", MIN_NUMBER_OF_ROUNDS, MAX_NUMBER_OF_ROUNDS);
-
-            InitialisePlayers(numberOfPlayers);
-
-            Play(numberOfRounds);
+            return _ui.GetUserInput("Please enter number of players (2-6):",
+                MIN_NUMBER_OF_PLAYERS, MAX_NUMBER_OF_PLAYERS);
         }
 
-        private void InitialisePlayers(ushort numberOfPlayers)
+        public ushort GetNumberOfRounds()
+        {
+            return _ui.GetUserInput("Please enter number of players (2-5):",
+                MIN_NUMBER_OF_ROUNDS, MAX_NUMBER_OF_ROUNDS);
+        }
+
+        public void InitialisePlayers(ushort numberOfPlayers)
         {
             _players = new List<IPlayer>(numberOfPlayers);
 
@@ -49,20 +51,20 @@ namespace TwoCardPoker
             }
         }
 
-        private void Play(ushort numberOfRounds)
+        public void PlayRounds(ushort numberOfRounds)
         {
             for(var i = 0; i < numberOfRounds; i++)
             {
-                Console.WriteLine($"Round {i + 1}");
+                _ui.ShowMessage($"Round {i + 1}");
                 PlayRound();
-                Console.WriteLine();
-                Console.ReadKey();
+                _ui.ShowMessage("");
+                _ui.WaitForNextCommand();
             }
         }
 
         private void PlayRound()
         {
-            _dealer.Shuffle(10);
+            _dealer.Shuffle(NUMBER_OF_SHUFFLES_PER_DEAL);
             _dealer.Deal(_players, HAND_SIZE);
             
             _players.Sort((a,b) => (b.Hand.CompareTo(a.Hand)));
@@ -72,25 +74,6 @@ namespace TwoCardPoker
                 var player = _players[i];
 
                 Console.WriteLine($"{player.Name} {player.Hand.Get(0).Suit} {player.Hand.Get(0).Value} {player.Hand.Get(1).Suit} {player.Hand.Get(1).Value} { player.Hand.GetRank() } Score: {4-i}");
-            }
-        }
-
-        private ushort GetUserInput(string message, ushort min, ushort max)
-        {
-            while (true)
-            {
-                _ui.ShowMessage(message);
-
-                ushort userInput;
-
-                ushort.TryParse(_ui.GetInput(), out userInput);
-
-                bool validUserInput = userInput >= min && userInput <= max;
-
-                if (validUserInput)
-                {
-                    return userInput;
-                }
             }
         }
     }

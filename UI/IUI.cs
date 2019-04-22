@@ -5,6 +5,8 @@ namespace UserInterface
     {
         void ShowMessage(string message);
 
-        string GetInput();
+        ushort GetUserInput(string message, ushort min, ushort max);
+
+        void WaitForNextCommand();
     }
 }

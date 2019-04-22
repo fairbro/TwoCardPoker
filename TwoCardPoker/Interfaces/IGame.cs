@@ -3,6 +3,9 @@
     public interface IGame
     {
         void ShowIntro();
-        void GetUserInput();
+        ushort GetNumberOfPlayers();
+        ushort GetNumberOfRounds();
+        void InitialisePlayers(ushort numberOfPlayers);
+        void PlayRounds(ushort numberOfRounds);
     }
 }

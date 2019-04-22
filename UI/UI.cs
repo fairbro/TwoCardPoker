@@ -4,14 +4,33 @@ namespace UserInterface
 {
     public class UI : IUI
     {
-        public string GetInput()
-        {
-            return Console.ReadLine();
-        }
-
         public void ShowMessage(string message)
         {
             Console.WriteLine(message);
+        }
+
+        public ushort GetUserInput(string message, ushort min, ushort max)
+        {
+            while (true)
+            {
+                ShowMessage(message);
+
+                ushort userInput;
+
+                ushort.TryParse(Console.ReadLine(), out userInput);
+
+                bool validUserInput = userInput >= min && userInput <= max;
+
+                if (validUserInput)
+                {
+                    return userInput;
+                }
+            }
+        }
+
+        public void WaitForNextCommand()
+        {
+            Console.ReadLine();
         }
     }
 }
