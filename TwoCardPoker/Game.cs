@@ -73,7 +73,7 @@ namespace TwoCardPoker
             {
                 var player = _players[i];
 
-                int roundScore = 4 - i;
+                int roundScore = _players.Count - i;
 
                 player.Score += roundScore;
 
