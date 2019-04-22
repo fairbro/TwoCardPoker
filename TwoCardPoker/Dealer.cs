@@ -4,8 +4,6 @@ namespace TwoCardPoker
 {
     public class Dealer : IDealer
     {
-       // private const ushort NUMBER_OF_CARDS = 2;
-
         private readonly IDeck _deck;
 
         public Dealer(IDeck deck)
@@ -17,14 +15,21 @@ namespace TwoCardPoker
         {
             ushort deckIndex = 0;
 
-            foreach(var player in players)
+            foreach (var player in players)
             {
-                for(var i = 0; i < numberOfCards; i++)
+                player.Hand.Reset(numberOfCards);
+
+                for (var i = 0; i < numberOfCards; i++)
                 {
                     player.Hand.Add(_deck.GetCard(deckIndex));
                     deckIndex++;
                 }
             }
+        }
+
+        public void Shuffle(uint numberOfShuffles)
+        {
+            _deck.Shuffle(numberOfShuffles);
         }
     }
 }

@@ -24,5 +24,18 @@ namespace TwoCardPoker
         {
             return Cards[index];
         }
+
+        public void Shuffle(uint numberOfShuffles)
+        {
+            var random = new Random();
+
+            for (int n = NUMBER_OF_CARDS - 1; n > 0; --n)
+            {
+                int k = random.Next(n + 1);
+                ICard temp = Cards[n];
+                Cards[n] = Cards[k];
+                Cards[k] = temp;
+            }
+        }
     }
 }

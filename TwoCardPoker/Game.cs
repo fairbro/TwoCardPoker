@@ -58,15 +58,16 @@ namespace TwoCardPoker
 
         private void PlayRound()
         {
+            _dealer.Shuffle(10);
             _dealer.Deal(_players, HAND_SIZE);
-
+            
             _players.Sort((a,b) => (b.Hand.CompareTo(a.Hand)));
 
             for(var i=0; i<_players.Count; i++)
             {
                 var player = _players[i];
 
-                Console.WriteLine($"{player.Name} {player.Hand.GetHighCard().Suit} {player.Hand.GetHighCard().Value} Score: {4-i}");
+                Console.WriteLine($"{player.Name} {player.Hand.Get(0).Suit} {player.Hand.Get(0).Value} {player.Hand.Get(1).Suit} {player.Hand.Get(1).Value} { player.Hand.GetRank() } Score: {4-i}");
             }
         }
 

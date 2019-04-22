@@ -8,6 +8,7 @@ namespace TwoCardPoker
         void Add(ICard card);
         Rank GetRank();
         ICard GetHighCard();
+        void Reset(ushort numberOfCards);
         int CompareTo(IHand hand);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using TwoCardPoker;
 using Xunit;
 
@@ -107,6 +108,19 @@ namespace TwoCardPokerTests
             losingHand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.King));
 
             Assert.Equal(1, winningHand.CompareTo(losingHand));
+        }
+
+        [Fact]
+        public void Reset_RemovesCardsFromHand()
+        {
+            var hand = new Hand(2);
+
+            hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Three));
+            hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Two));
+
+            hand.Reset(2);
+
+            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => hand.Get(0));
         }
     }
 }

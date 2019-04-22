@@ -5,7 +5,7 @@ namespace TwoCardPoker
 {
     public class Hand : IHand, IComparable<IHand>
     {
-        private readonly IList<ICard> Cards;
+        private IList<ICard> Cards;
 
         public Hand(ushort numberOfCards)
         {
@@ -24,6 +24,11 @@ namespace TwoCardPoker
         public ICard Get(ushort index)
         {
             return Cards[index];
+        }
+
+        public void Reset(ushort numberOfCards)
+        {
+            Cards = new List<ICard>(numberOfCards);
         }
 
         public Rank GetRank()
