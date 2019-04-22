@@ -1,4 +1,5 @@
 ﻿using System;
+using TwoCardPoker.Interfaces;
 using static TwoCardPoker.CardTypes;
 
 namespace TwoCardPoker

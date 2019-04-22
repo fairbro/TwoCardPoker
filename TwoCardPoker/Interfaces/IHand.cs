@@ -1,6 +1,6 @@
 ﻿using static TwoCardPoker.Hand;
 
-namespace TwoCardPoker
+namespace TwoCardPoker.Interfaces
 {
     public interface IHand
     {
