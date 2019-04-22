@@ -8,9 +8,10 @@ namespace TwoCardPoker
         public IList<ICard> Hand { get; set; }
         public short Score { get; set; }
 
-        public Player(string name)
+        public Player(string name, ushort size)
         {
             Name = name;
+            Hand = new List<ICard>(size);
         }
     }
 }

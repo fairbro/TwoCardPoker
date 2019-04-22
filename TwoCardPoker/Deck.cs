@@ -7,7 +7,7 @@ namespace TwoCardPoker
     {
         private const short NUMBER_OF_CARDS = 52;
 
-        public List<ICard> Cards = new List<ICard>(NUMBER_OF_CARDS);
+        private List<ICard> Cards = new List<ICard>(NUMBER_OF_CARDS);
 
         public Deck()
         {
@@ -18,6 +18,11 @@ namespace TwoCardPoker
                     Cards.Add(new Card(suit, value));
                 }
             }
+        }
+
+        public ICard GetCard(ushort index)
+        {
+            return Cards[index];
         }
     }
 }

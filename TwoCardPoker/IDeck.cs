@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace TwoCardPoker
+﻿namespace TwoCardPoker
 {
     public interface IDeck
     {
-        
+        ICard GetCard(ushort index);
     }
 }
