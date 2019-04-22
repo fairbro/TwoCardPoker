@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UserInterface;
 
 namespace TwoCardPoker
@@ -12,7 +14,7 @@ namespace TwoCardPoker
         private const ushort HAND_SIZE = 2;
 
         private readonly IDealer _dealer;
-        private IList<IPlayer> _players;
+        private List<IPlayer> _players;
         private readonly IUI _ui;
 
         public Game(IDealer dealer, IUI ui)
@@ -48,13 +50,24 @@ namespace TwoCardPoker
         {
             for(var i = 0; i < numberOfRounds; i++)
             {
+                Console.WriteLine($"Round {i + 1}");
                 PlayRound();
+                Console.WriteLine();
             }
         }
 
         private void PlayRound()
         {
             _dealer.Deal(_players, HAND_SIZE);
+
+            _players.Sort((a,b) => (b.Hand.CompareTo(a.Hand)));
+
+            for(var i=0; i<_players.Count; i++)
+            {
+                var player = _players[i];
+
+                Console.WriteLine($"{player.Name} {player.Hand.GetHighCard().Suit} {player.Hand.GetHighCard().Value} Score: {4-i}");
+            }
         }
 
         private ushort GetUserInput(string message, ushort min, ushort max)

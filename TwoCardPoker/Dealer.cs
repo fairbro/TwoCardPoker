@@ -4,9 +4,11 @@ namespace TwoCardPoker
 {
     public class Dealer : IDealer
     {
+       // private const ushort NUMBER_OF_CARDS = 2;
+
         private readonly IDeck _deck;
 
-        public Dealer(IDeck deck, ushort numberOfCards)
+        public Dealer(IDeck deck)
         {
             _deck = deck;
         }

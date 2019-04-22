@@ -4,6 +4,8 @@
     {
         string Name { get; set; }
         IHand Hand { get; set; }
-        short Score { get; set; }
+        ushort Score { get; set; }
+        int CompareTo(Player other);
+        //int CompareTo(object obj);
     }
 }

@@ -37,7 +37,7 @@ namespace TwoCardPokerTests
             mockDeck.Setup(x => x.GetCard(4)).Returns(card5);
             mockDeck.Setup(x => x.GetCard(5)).Returns(card6);
 
-            var dealer = new Dealer(mockDeck.Object, 2);
+            var dealer = new Dealer(mockDeck.Object);
 
             dealer.Deal(players, 2);
 

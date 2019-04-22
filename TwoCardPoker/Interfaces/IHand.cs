@@ -1,5 +1,4 @@
-﻿
-using static TwoCardPoker.Hand;
+﻿using static TwoCardPoker.Hand;
 
 namespace TwoCardPoker
 {
@@ -9,5 +8,6 @@ namespace TwoCardPoker
         void Add(ICard card);
         Rank GetRank();
         ICard GetHighCard();
+        int CompareTo(IHand hand);
     }
 }

@@ -7,7 +7,7 @@ namespace TwoCardPoker
     {
         private const short NUMBER_OF_CARDS = 52;
 
-        private List<ICard> Cards = new List<ICard>(NUMBER_OF_CARDS);
+        private IList<ICard> Cards = new List<ICard>(NUMBER_OF_CARDS);
 
         public Deck()
         {
