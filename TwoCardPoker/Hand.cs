@@ -7,13 +7,13 @@ namespace TwoCardPoker
 {
     public class Hand : IHand, IComparable<IHand>
     {
-        private IList<ICard> Cards;
+        private IList<ICard> _cards;
         private ushort _maxNumberOfCards;
 
         public Hand(ushort numberOfCards)
         {
             _maxNumberOfCards = numberOfCards;
-            Cards = new List<ICard>(numberOfCards);
+            _cards = new List<ICard>(numberOfCards);
         }
 
         public enum Rank
@@ -27,12 +27,12 @@ namespace TwoCardPoker
 
         public ICard Get(ushort index)
         {
-            return Cards[index];
+            return _cards[index];
         }
 
         public void Reset(ushort numberOfCards)
         {
-            Cards = new List<ICard>(numberOfCards);
+            _cards = new List<ICard>(numberOfCards);
         }
 
         public Rank GetRank()
@@ -59,32 +59,32 @@ namespace TwoCardPoker
 
         public void Add(ICard card)
         {
-            if (Cards.Count == _maxNumberOfCards)
+            if (_cards.Count == _maxNumberOfCards)
             {
                 throw new HandOverflowException("Hand already full.");
             }
             
-            Cards.Add(card);
+            _cards.Add(card);
         }
 
         public bool IsStraightFlush()
         {
-            return Cards[0].Suit == Cards[1].Suit && (Math.Abs(Cards[0].Value - Cards[1].Value)) <= 1;
+            return _cards[0].Suit == _cards[1].Suit && (Math.Abs(_cards[0].Value - _cards[1].Value)) <= 1;
         }
 
         public bool IsFlush()
         {
-            return Cards[0].Suit == Cards[1].Suit && (Math.Abs(Cards[0].Value - Cards[1].Value)) >= 1;
+            return _cards[0].Suit == _cards[1].Suit && (Math.Abs(_cards[0].Value - _cards[1].Value)) >= 1;
         }
 
         public bool IsStraight()
         {
-            return Cards[0].Suit != Cards[1].Suit && (Math.Abs(Cards[0].Value - Cards[1].Value)) <= 1;
+            return _cards[0].Suit != _cards[1].Suit && (Math.Abs(_cards[0].Value - _cards[1].Value)) <= 1;
         }
 
         public bool IsPair()
         {
-            return Cards[0].Value == Cards[1].Value;
+            return _cards[0].Value == _cards[1].Value;
         }
 
         public int CompareTo(IHand hand)
@@ -112,7 +112,7 @@ namespace TwoCardPoker
 
         public ICard GetHighCard()
         {
-            return Cards[0].CompareTo(Cards[1]) > 0 ? Cards[0] : Cards[1];
+            return _cards[0].CompareTo(_cards[1]) > 0 ? _cards[0] : _cards[1];
         }
     }
 }
