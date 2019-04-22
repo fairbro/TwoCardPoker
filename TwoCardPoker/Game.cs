@@ -12,7 +12,7 @@ namespace TwoCardPoker
         private const ushort HAND_SIZE = 2;
 
         private readonly IDealer _dealer;
-        private readonly IList<IPlayer> _players;
+        private IList<IPlayer> _players;
         private readonly IUI _ui;
 
         public Game(IDealer dealer, IUI ui)
@@ -36,6 +36,8 @@ namespace TwoCardPoker
 
         private void InitialisePlayers(ushort numberOfPlayers)
         {
+            _players = new List<IPlayer>(numberOfPlayers);
+
             for (var i = 0; i < numberOfPlayers; i++)
             {
                 _players.Add(new Player($"Player {i + 1}", HAND_SIZE));
