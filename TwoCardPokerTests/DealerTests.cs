@@ -57,5 +57,19 @@ namespace TwoCardPokerTests
             Assert.Equal(CardTypes.Suit.Spades, player3.Hand.Get(1).Suit);
             Assert.Equal(CardTypes.Value.Nine, player3.Hand.Get(1).Value);
         }
+
+        [Fact]
+        public void Shuffle_CallsShuffleOnDeck()
+        {
+            var mockDeck = new Mock<IDeck>();
+
+            var dealer = new Dealer(mockDeck.Object);
+
+            mockDeck.Setup(x => x.Shuffle(5));
+
+            dealer.Shuffle(5);
+
+            mockDeck.Verify(x => x.Shuffle(5), Times.Once());
+        }
     }
 }
