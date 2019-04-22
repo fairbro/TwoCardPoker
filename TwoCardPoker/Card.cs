@@ -16,7 +16,7 @@ namespace TwoCardPoker
 
         public int CompareTo(ICard card)
         {
-            if (card.Suit > Suit || (card.Suit == Suit && card.Value > Value))
+            if (Suit > card.Suit || (Suit == card.Suit && Value > card.Value))
             {
                 return 1;
             }
