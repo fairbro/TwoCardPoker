@@ -6,7 +6,7 @@ namespace TwoCardPokerTests
     public class HandTests
     {
         [Fact]
-        public void Hand_Add()
+        public void Add()
         {
             var hand = new Hand(2);
 
@@ -17,6 +17,50 @@ namespace TwoCardPokerTests
 
             Assert.Equal(CardTypes.Suit.Hearts, card.Suit);
             Assert.Equal(CardTypes.Value.Queen, card.Value);
+        }
+
+        [Fact]
+        public void Rand_IsStraightFlush()
+        {
+            var hand = new Hand(2);
+
+            hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Jack));
+            hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
+
+            Assert.True(hand.IsStraightFlush());
+        }
+
+        [Fact]
+        public void Rand_IsFlush()
+        {
+            var hand = new Hand(2);
+
+            hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Two));
+            hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
+
+            Assert.True(hand.IsFlush());
+        }
+
+        [Fact]
+        public void Rand_IsStraight()
+        {
+            var hand = new Hand(2);
+
+            hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Jack));
+            hand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen));
+
+            Assert.True(hand.IsStraight());
+        }
+
+        [Fact]
+        public void Rand_IsPair()
+        {
+            var hand = new Hand(2);
+
+            hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
+            hand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen));
+
+            Assert.True(hand.IsPair());
         }
 
         //[Theory]

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace TwoCardPoker
 {
     public class Player : IPlayer
