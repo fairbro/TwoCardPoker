@@ -16,15 +16,6 @@ namespace TwoCardPoker
             _cards = new List<ICard>(numberOfCards);
         }
 
-        public enum Rank
-        {
-            HighCard,
-            Pair,
-            Straight,
-            Flush,
-            StraightFlush
-        }
-
         public ICard Get(ushort index)
         {
             return _cards[index];
@@ -35,7 +26,25 @@ namespace TwoCardPoker
             _cards = new List<ICard>(numberOfCards);
         }
 
-        public Rank GetRank()
+        private Rank? _rank;
+
+        public Rank Rank
+        {
+            get {
+                if (_rank == null)
+                {
+                    _rank = GetRank();
+                }
+
+                return _rank.Value;
+            }
+            set
+            {
+                _rank = value;
+            }
+        }
+
+        private Rank GetRank()
         {
             if (IsStraightFlush())
             {
@@ -67,19 +76,29 @@ namespace TwoCardPoker
             _cards.Add(card);
         }
 
+        private bool CardsSameSuit(ICard card1, ICard card2)
+        {
+            return card1.Suit == card2.Suit;
+        }
+
+        private bool CardsInSequence(ICard card1, ICard card2)
+        {
+            return Math.Abs(card1.Value - card2.Value) == 1;
+        }
+
         public bool IsStraightFlush()
         {
-            return _cards[0].Suit == _cards[1].Suit && (Math.Abs(_cards[0].Value - _cards[1].Value)) <= 1;
+            return CardsSameSuit(_cards[0], _cards[1]) && CardsInSequence(_cards[0], _cards[1]);
         }
 
         public bool IsFlush()
         {
-            return _cards[0].Suit == _cards[1].Suit && (Math.Abs(_cards[0].Value - _cards[1].Value)) >= 1;
+            return CardsSameSuit(_cards[0], _cards[1]) && !CardsInSequence(_cards[0], _cards[1]);
         }
 
         public bool IsStraight()
         {
-            return _cards[0].Suit != _cards[1].Suit && (Math.Abs(_cards[0].Value - _cards[1].Value)) <= 1;
+            return !CardsSameSuit(_cards[0], _cards[1]) && CardsInSequence(_cards[0], _cards[1]);
         }
 
         public bool IsPair()
@@ -89,8 +108,8 @@ namespace TwoCardPoker
 
         public int CompareTo(IHand hand)
         {
-            var rank = (int)GetRank();
-            var comparisonHankRank = (int)hand.GetRank();
+            var rank = (int)Rank;
+            var comparisonHankRank = (int)hand.Rank;
 
             if (rank > comparisonHankRank)
             {

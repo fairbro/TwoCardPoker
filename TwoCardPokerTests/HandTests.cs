@@ -36,47 +36,58 @@ namespace TwoCardPokerTests
         }
 
         [Fact]
-        public void IsStraightFlush()
+        public void Rank_IsStraightFlush_ReturnsStraightFlush()
         {
             var hand = new Hand(2);
 
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Jack));
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
 
-            Assert.True(hand.IsStraightFlush());
+            Assert.Equal(Rank.StraightFlush, hand.Rank);
         }
 
         [Fact]
-        public void IsFlush()
+        public void Rank_IsFlush_ReturnsFlush()
         {
             var hand = new Hand(2);
 
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Two));
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
 
-            Assert.True(hand.IsFlush());
+            Assert.Equal(Rank.Flush, hand.Rank);
         }
 
         [Fact]
-        public void IsStraight()
+        public void Rank_IsStraight_ReturnsStraight()
         {
             var hand = new Hand(2);
 
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Jack));
             hand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen));
 
-            Assert.True(hand.IsStraight());
+            Assert.Equal(Rank.Straight, hand.Rank);
         }
 
         [Fact]
-        public void IsPair()
+        public void Rank_IsPair_ReturnsPair()
         {
             var hand = new Hand(2);
 
             hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
             hand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen));
 
-            Assert.True(hand.IsPair());
+            Assert.Equal(Rank.Pair, hand.Rank);
+        }
+
+        [Fact]
+        public void Rank_IsHighCard_ReturnsHighCard()
+        {
+            var hand = new Hand(2);
+
+            hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
+            hand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Ace));
+
+            Assert.Equal(Rank.HighCard, hand.Rank);
         }
 
         [Fact]
