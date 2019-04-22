@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TwoCardPoker.Exceptions;
 using TwoCardPoker.Interfaces;
 
 namespace TwoCardPoker
@@ -7,9 +8,11 @@ namespace TwoCardPoker
     public class Hand : IHand, IComparable<IHand>
     {
         private IList<ICard> Cards;
+        private ushort _maxNumberOfCards;
 
         public Hand(ushort numberOfCards)
         {
+            _maxNumberOfCards = numberOfCards;
             Cards = new List<ICard>(numberOfCards);
         }
 
@@ -56,7 +59,11 @@ namespace TwoCardPoker
 
         public void Add(ICard card)
         {
-            //TODO: throw exception if hand all ready full
+            if (Cards.Count == _maxNumberOfCards)
+            {
+                throw new HandOverflowException("Hand already full.");
+            }
+            
             Cards.Add(card);
         }
 

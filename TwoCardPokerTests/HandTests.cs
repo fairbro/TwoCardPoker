@@ -1,5 +1,6 @@
 using System;
 using TwoCardPoker;
+using TwoCardPoker.Exceptions;
 using Xunit;
 
 namespace TwoCardPokerTests
@@ -18,6 +19,20 @@ namespace TwoCardPokerTests
 
             Assert.Equal(CardTypes.Suit.Hearts, card.Suit);
             Assert.Equal(CardTypes.Value.Queen, card.Value);
+        }
+
+        [Fact]
+        public void Add_ThrowsExceptionIfTryingToAddTooManyCards()
+        {
+            var hand = new Hand(2);
+
+            hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Two));
+            hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen));
+
+            Exception ex = Assert.Throws<HandOverflowException>(() =>
+                hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.King)));
+
+            Assert.Equal("Hand already full.", ex.Message);
         }
 
         [Fact]
