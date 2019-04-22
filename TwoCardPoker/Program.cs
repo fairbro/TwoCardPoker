@@ -29,6 +29,8 @@ namespace TwoCardPoker
 
             game.PlayRounds(numberOfRounds);
 
+            game.ShowResults();
+
             Console.ReadKey();
         }
     }

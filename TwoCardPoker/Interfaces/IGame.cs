@@ -7,5 +7,6 @@
         ushort GetNumberOfRounds();
         void InitialisePlayers(ushort numberOfPlayers);
         void PlayRounds(ushort numberOfRounds);
+        void ShowResults();
     }
 }

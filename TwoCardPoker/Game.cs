@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TwoCardPoker.Interfaces;
 using UserInterface;
 
@@ -58,6 +57,7 @@ namespace TwoCardPoker
                 _ui.ShowMessage($"Round {i + 1}");
                 PlayRound();
                 _ui.ShowMessage("");
+                _ui.ShowMessage("'ENTER' to continue");
                 _ui.WaitForNextCommand();
             }
         }
@@ -69,7 +69,7 @@ namespace TwoCardPoker
             
             _players.Sort((a,b) => (b.Hand.CompareTo(a.Hand)));
 
-            for(var i=0; i<_players.Count; i++)
+            for(var i = 0; i < _players.Count; i++)
             {
                 var player = _players[i];
 
@@ -77,7 +77,22 @@ namespace TwoCardPoker
 
                 player.Score += roundScore;
 
-                Console.WriteLine($"{player.Name} {player.Hand.Get(0).Suit} {player.Hand.Get(0).Value} {player.Hand.Get(1).Suit} {player.Hand.Get(1).Value} { player.Hand.GetRank() } Score: {roundScore}");
+                _ui.ShowMessage($"{player.Name} {player.Hand.Get(0).Suit} {player.Hand.Get(0).Value} " +
+                    $"{player.Hand.Get(1).Suit} {player.Hand.Get(1).Value} " +
+                    $"{ player.Hand.GetRank() } " +
+                    $"Score: {roundScore}");
+            }
+        }
+
+        public void ShowResults()
+        {
+            _players.Sort((a, b) => (b.Score.CompareTo(a.Score)));
+
+            _ui.ShowMessage("WINNER!");
+
+            foreach(var player in _players)
+            {
+                _ui.ShowMessage($"{player.Name} Score: {player.Score}");
             }
         }
     }
