@@ -99,7 +99,7 @@ namespace TwoCardPoker
 
         public ICard GetHighCard()
         {
-            return Cards[0].CompareTo(Cards[1]) > 0 ? Cards[1] : Cards[0];
+            return Cards[0].CompareTo(Cards[1]) > 0 ? Cards[0] : Cards[1];
         }
     }
 }

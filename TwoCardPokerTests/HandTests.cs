@@ -68,8 +68,8 @@ namespace TwoCardPokerTests
         {
             var hand = new Hand(2);
 
-            var lowCard = new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen);
             var highCard = new Card(CardTypes.Suit.Clubs, CardTypes.Value.Queen);
+            var lowCard = new Card(CardTypes.Suit.Hearts, CardTypes.Value.Queen);
 
             hand.Add(highCard);
             hand.Add(lowCard);
@@ -94,7 +94,7 @@ namespace TwoCardPokerTests
         }
 
         [Fact]
-        public void CompareTo_BothStraightFlushs_HighestRankedSuitWins()
+        public void CompareTo_FirstHandHigherRank_Returns1()
         {
             var winningHand = new Hand(2);
 
@@ -106,36 +106,7 @@ namespace TwoCardPokerTests
             losingHand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.Ace));
             losingHand.Add(new Card(CardTypes.Suit.Clubs, CardTypes.Value.King));
 
-            Assert.Equal(-1, winningHand.CompareTo(losingHand));
+            Assert.Equal(1, winningHand.CompareTo(losingHand));
         }
-
-        //[Theory]
-        ////Highest card determined by suit
-        //[InlineData(CardTypes.Suit.Spades, CardTypes.Value.Three, CardTypes.Suit.Spades, CardTypes.Value.Two,
-        //    CardTypes.Suit.Clubs, CardTypes.Value.Three, CardTypes.Suit.Clubs, CardTypes.Value.Two,
-        //    "Error in highest card determined by suit")]
-        //public void HighCard_Both(
-        //    CardTypes.Suit handACard1Suit,
-        //    CardTypes.Value handACard1Value,
-        //    CardTypes.Suit handACard2Suit,
-        //    CardTypes.Value handACard2Value,
-        //    CardTypes.Suit handBCard1Suit,
-        //    CardTypes.Value handBCard1Value,
-        //    CardTypes.Suit handBCard2Suit,
-        //    CardTypes.Value handBCard2Value,
-        //    string message)
-        //{
-        //    var handA = new List<ICard> {
-        //        new Card(handACard1Suit, handACard1Value),
-        //        new Card(handACard2Suit, handACard2Value)
-        //    };
-
-        //    var handB = new List<ICard> {
-        //        new Card(handBCard1Suit, handBCard1Value),
-        //        new Card(handBCard2Suit, handBCard2Value)
-        //    };
-
-        //    Hand
-        //}
     }
 }
