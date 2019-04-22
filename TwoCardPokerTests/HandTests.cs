@@ -148,5 +148,23 @@ namespace TwoCardPokerTests
 
             Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => hand.Get(0));
         }
+
+        [Fact]
+        public void Reset_RankCanUpateOnRedeal()
+        {
+            var hand = new Hand(2);
+
+            hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Three));
+            hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Two));
+
+            Assert.Equal(Rank.StraightFlush, hand.Rank);
+
+            hand.Reset(2);
+
+            hand.Add(new Card(CardTypes.Suit.Hearts, CardTypes.Value.Ace));
+            hand.Add(new Card(CardTypes.Suit.Spades, CardTypes.Value.Two));
+
+            Assert.Equal(Rank.HighCard, hand.Rank);
+        }
     }
 }

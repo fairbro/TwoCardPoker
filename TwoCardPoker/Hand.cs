@@ -24,6 +24,7 @@ namespace TwoCardPoker
         public void Reset(ushort numberOfCards)
         {
             _cards = new List<ICard>(numberOfCards);
+            _rank = null;
         }
 
         private Rank? _rank;
