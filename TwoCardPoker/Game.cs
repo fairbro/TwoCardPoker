@@ -14,8 +14,9 @@ namespace TwoCardPoker
         private const ushort NUMBER_OF_SHUFFLES_PER_DEAL = 10;
 
         private readonly IDealer _dealer;
-        private List<IPlayer> _players;
         private readonly IUI _ui;
+
+        public List<IPlayer> Players;
 
         public Game(IDealer dealer, IUI ui)
         {
@@ -42,11 +43,11 @@ namespace TwoCardPoker
 
         public void InitialisePlayers(ushort numberOfPlayers)
         {
-            _players = new List<IPlayer>(numberOfPlayers);
+            Players = new List<IPlayer>(numberOfPlayers);
 
             for (var i = 0; i < numberOfPlayers; i++)
             {
-                _players.Add(new Player($"Player {i + 1}", HAND_SIZE));
+                Players.Add(new Player($"Player {i + 1}", HAND_SIZE));
             }
         }
 
@@ -65,15 +66,15 @@ namespace TwoCardPoker
         private void PlayRound()
         {
             _dealer.Shuffle(NUMBER_OF_SHUFFLES_PER_DEAL);
-            _dealer.Deal(_players, HAND_SIZE);
+            _dealer.Deal(Players, HAND_SIZE);
             
-            _players.Sort((a,b) => (b.Hand.CompareTo(a.Hand)));
+            Players.Sort((a,b) => (b.Hand.CompareTo(a.Hand)));
 
-            for(var i = 0; i < _players.Count; i++)
+            for(var i = 0; i < Players.Count; i++)
             {
-                var player = _players[i];
+                var player = Players[i];
 
-                int roundScore = _players.Count - i;
+                int roundScore = Players.Count - i;
 
                 player.Score += roundScore;
 
@@ -86,11 +87,11 @@ namespace TwoCardPoker
 
         public void ShowResults()
         {
-            _players.Sort((a, b) => (b.Score.CompareTo(a.Score)));
+            Players.Sort((a, b) => (b.Score.CompareTo(a.Score)));
 
             _ui.ShowMessage("WINNER!");
 
-            foreach(var player in _players)
+            foreach(var player in Players)
             {
                 _ui.ShowMessage($"{player.Name} Score: {player.Score}");
             }
