@@ -4,7 +4,7 @@ using TwoCardPoker.Interfaces;
 
 namespace TwoCardPoker
 {
-    public class Player : IPlayer, IComparable<Player>
+    public class Player : IPlayer
     {
         public string Name { get; set; }
         public IHand Hand { get; set; }
@@ -14,16 +14,6 @@ namespace TwoCardPoker
         {
             Name = name;
             Hand = new Hand(size);
-        }
-
-        public int CompareTo(IPlayer other)
-        {
-            return 1; // throw new NotImplementedException();
-        }
-
-        public int CompareTo(Player other)
-        {
-            throw new NotImplementedException();
         }
     }
 }
