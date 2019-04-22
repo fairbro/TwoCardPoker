@@ -4,6 +4,14 @@ namespace UserInterface
 {
     public class UI : IUI
     {
+        public void ShowIntro()
+        {
+            Console.WriteLine("**************************************");
+            Console.WriteLine("* Welcome to 2 Card Poker Challenge! *");
+            Console.WriteLine("**************************************");
+            Console.WriteLine();
+        }
+
         public void ShowMessage(string message)
         {
             Console.WriteLine(message);

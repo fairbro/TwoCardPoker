@@ -25,7 +25,7 @@ namespace TwoCardPoker
 
         public void ShowIntro()
         {
-            _ui.ShowMessage("Welcome to 2 Card Poker Challenge!");
+            _ui.ShowIntro();
         }
 
         public ushort GetNumberOfPlayers()

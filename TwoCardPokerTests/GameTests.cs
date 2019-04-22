@@ -9,18 +9,18 @@ namespace TwoCardPokerTests
     public class GameTests
     {
         [Fact]
-        public void ShowInto_CallsUIWithIntroMessage()
+        public void ShowInto_CallsUIShowIntro()
         {
             var mockDealer = new Mock<IDealer>();
             var mockUI = new Mock<IUI>();
 
-            mockUI.Setup(x => x.ShowMessage("Welcome to 2 Card Poker Challenge!"));
+            mockUI.Setup(x => x.ShowIntro());
 
             var game = new Game(mockDealer.Object, mockUI.Object);
 
             game.ShowIntro();
 
-            mockUI.Verify(x => x.ShowMessage("Welcome to 2 Card Poker Challenge!"), Times.Once());
+            mockUI.Verify(x => x.ShowIntro(), Times.Once());
         }
 
         [Fact]
