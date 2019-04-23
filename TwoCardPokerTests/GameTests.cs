@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using TwoCardPoker;
 using TwoCardPoker.Interfaces;
-using UserInterface;
 using Xunit;
 
 namespace TwoCardPokerTests
