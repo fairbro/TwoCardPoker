@@ -1,9 +1,9 @@
+# 2 Card Poker Challenge
+
 ## Assumptions
 
 If two hands have the same rank use the High Card to differentiate them.
 After all rounds have been played it is ok to have players with the same over score (you can have multiple winners)
-
-# 2 Card Poker Challenge
 
 This programming challenge is designed to see how you code, it should be able to 
 an hour and include input validation and unit tests to prove your code will work 
