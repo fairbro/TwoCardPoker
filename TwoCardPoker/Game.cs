@@ -24,11 +24,6 @@ namespace TwoCardPoker
             _ui = ui;
         }
 
-        public void ShowIntro()
-        {
-            _ui.ShowIntro();
-        }
-
         public ushort GetNumberOfPlayers()
         {
             return _ui.GetNumericInput("Please enter number of players (2-6):",
@@ -51,19 +46,7 @@ namespace TwoCardPoker
             }
         }
 
-        public void PlayRounds(ushort numberOfRounds)
-        {
-            for(var i = 0; i < numberOfRounds; i++)
-            {
-                _ui.ShowMessage($"Round {i + 1}");
-                PlayRound();
-                _ui.ShowMessage("");
-                _ui.ShowMessage("'ENTER' to continue");
-                _ui.WaitForNextCommand();
-            }
-        }
-
-        private void PlayRound()
+        public void PlayRound()
         {
             _dealer.Shuffle(NUMBER_OF_SHUFFLES_PER_DEAL);
             _dealer.Deal(Players, HAND_SIZE);

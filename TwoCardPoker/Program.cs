@@ -19,8 +19,9 @@ namespace TwoCardPoker
             .BuildServiceProvider();
 
             var game = serviceProvider.GetService<IGame>();
+            var ui = serviceProvider.GetService<IUI>();
 
-            game.ShowIntro();
+            ui.ShowIntro();
 
             var numberOfPlayers = game.GetNumberOfPlayers();
 
@@ -28,7 +29,14 @@ namespace TwoCardPoker
 
             game.InitialisePlayers(numberOfPlayers);
 
-            game.PlayRounds(numberOfRounds);
+            for (var i = 0; i < numberOfRounds; i++)
+            {
+                ui.ShowMessage($"Round {i + 1}");
+                game.PlayRound();
+                ui.ShowMessage("");
+                ui.ShowMessage("'ENTER' to continue");
+                ui.WaitForNextCommand();
+            }
 
             game.ShowResults();
 
