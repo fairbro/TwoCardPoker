@@ -59,13 +59,15 @@ namespace UserInterface
 
         public void ShowFinalResults(IEnumerable<IPlayerFinalScore> playerResults)
         {
-            playerResults.ToList().Sort((a, b) => a.Score.CompareTo(b.Score));
+            var results = playerResults.ToList();
+                
+            results.Sort((a, b) => b.Score.CompareTo(a.Score));
 
             Console.WriteLine("Final Results:\n");
 
-            foreach(var playerResult in playerResults)
+            foreach(var result in results)
             {
-                Console.WriteLine($"{playerResult.Name}\t Score: {playerResult.Score}");
+                Console.WriteLine($"{result.Name}\t Score: {result.Score}");
             }
         }
     }
