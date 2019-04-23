@@ -33,6 +33,8 @@ namespace TwoCardPoker
             game.ShowResults();
 
             Console.ReadKey();
+
+            serviceProvider.Dispose();
         }
     }
 }
