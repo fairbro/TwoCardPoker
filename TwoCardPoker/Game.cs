@@ -6,10 +6,6 @@ namespace TwoCardPoker
 {
     public class Game : IGame
     {
-        private const ushort MIN_NUMBER_OF_PLAYERS = 2;
-        private const ushort MAX_NUMBER_OF_PLAYERS = 6;
-        private const ushort MIN_NUMBER_OF_ROUNDS = 2;
-        private const ushort MAX_NUMBER_OF_ROUNDS = 5;
         private const ushort HAND_SIZE = 2;
         private const ushort NUMBER_OF_SHUFFLES_PER_DEAL = 10;
 
@@ -22,18 +18,6 @@ namespace TwoCardPoker
         {
             _dealer = dealer;
             _ui = ui;
-        }
-
-        public ushort GetNumberOfPlayers()
-        {
-            return _ui.GetNumericInput("Please enter number of players (2-6):",
-                MIN_NUMBER_OF_PLAYERS, MAX_NUMBER_OF_PLAYERS);
-        }
-
-        public ushort GetNumberOfRounds()
-        {
-            return _ui.GetNumericInput("Please enter number of rounds (2-5):",
-                MIN_NUMBER_OF_ROUNDS, MAX_NUMBER_OF_ROUNDS);
         }
 
         public void InitialisePlayers(ushort numberOfPlayers)

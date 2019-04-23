@@ -7,6 +7,11 @@ namespace TwoCardPoker
 {
     class Program
     {
+        private const ushort MIN_NUMBER_OF_PLAYERS = 2;
+        private const ushort MAX_NUMBER_OF_PLAYERS = 6;
+        private const ushort MIN_NUMBER_OF_ROUNDS = 2;
+        private const ushort MAX_NUMBER_OF_ROUNDS = 5;
+
         static void Main(string[] args)
         {
             //Dependency Injection
@@ -23,9 +28,11 @@ namespace TwoCardPoker
 
             ui.ShowIntro();
 
-            var numberOfPlayers = game.GetNumberOfPlayers();
+            var numberOfPlayers = ui.GetNumericInput("Please enter number of players (2-6):",
+                MIN_NUMBER_OF_PLAYERS, MAX_NUMBER_OF_PLAYERS);
 
-            var numberOfRounds = game.GetNumberOfRounds();
+            var numberOfRounds = ui.GetNumericInput("Please enter number of rounds (2-5):",
+                MIN_NUMBER_OF_ROUNDS, MAX_NUMBER_OF_ROUNDS);
 
             game.InitialisePlayers(numberOfPlayers);
 
