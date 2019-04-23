@@ -1,3 +1,8 @@
+## Assumptions
+
+If two hands have the same rank use the High Card to differentiate them.
+After all rounds have been played it is ok to have players with the same over score (you can have multiple winners)
+
 # 2 Card Poker Challenge
 
 This programming challenge is designed to see how you code, it should be able to 
@@ -64,8 +69,3 @@ And a deck of 52 cards
 When I shuffle the deck X time (s)
 
 Then the deck is in a different order each time
-
-
-#### Assumptions
-
-If two hands have the same rank use the High Card to differentiate them.
