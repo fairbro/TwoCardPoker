@@ -86,22 +86,22 @@ namespace TwoCardPoker
             return Math.Abs(card1.Value - card2.Value) == 1;
         }
 
-        public bool IsStraightFlush()
+        private bool IsStraightFlush()
         {
             return CardsSameSuit(_cards[0], _cards[1]) && CardsInSequence(_cards[0], _cards[1]);
         }
 
-        public bool IsFlush()
+        private bool IsFlush()
         {
             return CardsSameSuit(_cards[0], _cards[1]) && !CardsInSequence(_cards[0], _cards[1]);
         }
 
-        public bool IsStraight()
+        private bool IsStraight()
         {
             return !CardsSameSuit(_cards[0], _cards[1]) && CardsInSequence(_cards[0], _cards[1]);
         }
 
-        public bool IsPair()
+        private bool IsPair()
         {
             return _cards[0].Value == _cards[1].Value;
         }
