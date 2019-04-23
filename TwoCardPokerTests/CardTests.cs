@@ -1,4 +1,5 @@
-﻿using TwoCardPoker;
+﻿using Common;
+using TwoCardPoker;
 using Xunit;
 
 namespace TwoCardPokerTests

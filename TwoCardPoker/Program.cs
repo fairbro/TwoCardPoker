@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Common;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
 using TwoCardPoker.Interfaces;
 using UserInterface;
 
@@ -19,13 +21,15 @@ namespace TwoCardPoker
             //Dependency Injection
             var serviceProvider = new ServiceCollection()
             .AddSingleton<IGame, Game>()
-            .AddTransient<IDeck, Deck>()
-            .AddTransient<IDealer, Dealer>()
+            .AddSingleton<IScorer, Scorer>()
+            .AddSingleton<IDeck, Deck>()
+            .AddSingleton<IDealer, Dealer>()
             .AddTransient<IHand, Hand>()
-            .AddTransient<IUI, UI>()
+            .AddSingleton<IUI, UI>()
             .BuildServiceProvider();
 
             var game = serviceProvider.GetService<IGame>();
+            var scorer = serviceProvider.GetService<IScorer>();
             var ui = serviceProvider.GetService<IUI>();
 
             ui.ShowIntro();
@@ -36,18 +40,23 @@ namespace TwoCardPoker
             var numberOfRounds = ui.GetNumericInput("Please enter number of rounds (2-5):",
                 MIN_NUMBER_OF_ROUNDS, MAX_NUMBER_OF_ROUNDS);
 
-            game.InitialisePlayers(numberOfPlayers);
+            var players = game.InitialisePlayers(numberOfPlayers);
 
             for (var i = 0; i < numberOfRounds; i++)
             {
-                ui.ShowMessage($"Round {i + 1}");
-                game.PlayRound(NUMBER_OF_SHUFFLES, HAND_SIZE);
-                ui.ShowMessage("");
-                ui.ShowMessage("'ENTER' to continue");
-                ui.WaitForNextCommand();
+                game.PlayRound(players, NUMBER_OF_SHUFFLES, HAND_SIZE);
+                var roundScores = scorer.GetRoundResults(players);
+
+                int roundNumber = i + 1;
+
+                ui.ShowRoundResults(roundScores, roundNumber);
             }
 
-            game.ShowResults();
+            ui.ShowFinalResults(players.Select(x => new PlayerFinalScore
+            {
+                Name = x.Name,
+                Score = x.Score
+            }));
 
             Console.ReadKey();
 

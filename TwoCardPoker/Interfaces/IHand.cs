@@ -1,4 +1,7 @@
-﻿namespace TwoCardPoker.Interfaces
+﻿using Common;
+using Common.Interfaces;
+
+namespace TwoCardPoker.Interfaces
 {
     public interface IHand
     {

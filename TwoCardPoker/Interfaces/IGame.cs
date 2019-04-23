@@ -1,9 +1,11 @@
-﻿namespace TwoCardPoker.Interfaces
+﻿using System.Collections.Generic;
+
+namespace TwoCardPoker.Interfaces
 {
     public interface IGame
     {
-        void InitialisePlayers(ushort numberOfPlayers);
-        void PlayRound(ushort numberOfShuffles, ushort handSize);
-        void ShowResults();
+        List<IPlayer> InitialisePlayers(ushort numberOfPlayers);
+        void PlayRound(List<IPlayer> players, ushort numberOfShuffles, ushort handSize);
+        //void ShowResults();
     }
 }

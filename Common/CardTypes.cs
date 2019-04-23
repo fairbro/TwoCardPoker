@@ -1,4 +1,4 @@
-﻿namespace TwoCardPoker
+﻿namespace Common
 {
     public class CardTypes
     {

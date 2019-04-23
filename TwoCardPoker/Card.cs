@@ -1,6 +1,6 @@
-﻿using System;
-using TwoCardPoker.Interfaces;
-using static TwoCardPoker.CardTypes;
+﻿using Common.Interfaces;
+using System;
+using static Common.CardTypes;
 
 namespace TwoCardPoker
 {

@@ -1,4 +1,6 @@
-﻿namespace TwoCardPoker.Interfaces
+﻿using Common.Interfaces;
+
+namespace TwoCardPoker.Interfaces
 {
     public interface IDeck
     {

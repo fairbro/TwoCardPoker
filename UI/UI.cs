@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Common.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace UserInterface
 {
@@ -21,7 +24,7 @@ namespace UserInterface
         {
             while (true)
             {
-                ShowMessage(message);
+                Console.Write(message);
 
                 ushort userInput;
 
@@ -36,9 +39,34 @@ namespace UserInterface
             }
         }
 
-        public void WaitForNextCommand()
+        public void ShowRoundResults(IEnumerable<IPlayerRoundResult> roundResults, int roundNumber)
         {
+            Console.WriteLine($"Round {roundNumber}:\n");
+
+            foreach(var roundResult in roundResults)
+            {
+                Console.WriteLine($"{roundResult.Name}\t" +
+                    $"Round Score: {roundResult.Score}\t" +
+                    $"{roundResult.Hand[0].Value} {roundResult.Hand[0].Suit}\t" +
+                    $"{roundResult.Hand[1].Value} {roundResult.Hand[1].Suit}\t" +
+                    $"{roundResult.Rank}");
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("'ENTER' to continue");
             Console.ReadLine();
+        }
+
+        public void ShowFinalResults(IEnumerable<IPlayerFinalScore> playerResults)
+        {
+            playerResults.ToList().Sort((a, b) => a.Score.CompareTo(b.Score));
+
+            Console.WriteLine("Final Results:\n");
+
+            foreach(var playerResult in playerResults)
+            {
+                Console.WriteLine($"{playerResult.Name}\t Score: {playerResult.Score}");
+            }
         }
     }
 }

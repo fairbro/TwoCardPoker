@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoCardPoker", "TwoCardPoker\TwoCardPoker.csproj", "{270D3F77-F878-402A-9914-C5BA2B1E9282}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwoCardPoker", "TwoCardPoker\TwoCardPoker.csproj", "{270D3F77-F878-402A-9914-C5BA2B1E9282}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwoCardPokerTests", "TwoCardPokerTests\TwoCardPokerTests.csproj", "{A45FFC6F-BD43-4F78-B8F7-B1131B6B0962}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwoCardPokerTests", "TwoCardPokerTests\TwoCardPokerTests.csproj", "{A45FFC6F-BD43-4F78-B8F7-B1131B6B0962}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterface", "UI\UserInterface.csproj", "{1DA35EC3-F31D-445C-91DC-A4CF9071587B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserInterface", "UI\UserInterface.csproj", "{1DA35EC3-F31D-445C-91DC-A4CF9071587B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{990DC67C-3E94-4837-AE19-26FB879EF50A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1DA35EC3-F31D-445C-91DC-A4CF9071587B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DA35EC3-F31D-445C-91DC-A4CF9071587B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DA35EC3-F31D-445C-91DC-A4CF9071587B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{990DC67C-3E94-4837-AE19-26FB879EF50A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{990DC67C-3E94-4837-AE19-26FB879EF50A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{990DC67C-3E94-4837-AE19-26FB879EF50A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{990DC67C-3E94-4837-AE19-26FB879EF50A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

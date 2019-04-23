@@ -1,6 +1,6 @@
-﻿using static TwoCardPoker.CardTypes;
+﻿using static Common.CardTypes;
 
-namespace TwoCardPoker.Interfaces
+namespace Common.Interfaces
 {
     public interface ICard
     {
