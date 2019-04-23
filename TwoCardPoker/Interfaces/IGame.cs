@@ -3,7 +3,7 @@
     public interface IGame
     {
         void InitialisePlayers(ushort numberOfPlayers);
-        void PlayRound();
+        void PlayRound(ushort numberOfShuffles, ushort handSize);
         void ShowResults();
     }
 }

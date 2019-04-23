@@ -11,6 +11,8 @@ namespace TwoCardPoker
         private const ushort MAX_NUMBER_OF_PLAYERS = 6;
         private const ushort MIN_NUMBER_OF_ROUNDS = 2;
         private const ushort MAX_NUMBER_OF_ROUNDS = 5;
+        private const ushort NUMBER_OF_SHUFFLES = 10;
+        private const ushort HAND_SIZE = 2;
 
         static void Main(string[] args)
         {
@@ -39,7 +41,7 @@ namespace TwoCardPoker
             for (var i = 0; i < numberOfRounds; i++)
             {
                 ui.ShowMessage($"Round {i + 1}");
-                game.PlayRound();
+                game.PlayRound(NUMBER_OF_SHUFFLES, HAND_SIZE);
                 ui.ShowMessage("");
                 ui.ShowMessage("'ENTER' to continue");
                 ui.WaitForNextCommand();

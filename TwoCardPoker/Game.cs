@@ -6,9 +6,6 @@ namespace TwoCardPoker
 {
     public class Game : IGame
     {
-        private const ushort HAND_SIZE = 2;
-        private const ushort NUMBER_OF_SHUFFLES_PER_DEAL = 10;
-
         private readonly IDealer _dealer;
         private readonly IUI _ui;
 
@@ -30,10 +27,10 @@ namespace TwoCardPoker
             }
         }
 
-        public void PlayRound()
+        public void PlayRound(ushort numberOfShuffles, ushort handSize)
         {
-            _dealer.Shuffle(NUMBER_OF_SHUFFLES_PER_DEAL);
-            _dealer.Deal(Players, HAND_SIZE);
+            _dealer.Shuffle(numberOfShuffles);
+            _dealer.Deal(Players, handSize);
             
             Players.Sort((a,b) => (b.Hand.CompareTo(a.Hand)));
 
