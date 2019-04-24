@@ -1,5 +1,4 @@
-﻿
-using TwoCardPoker.Interfaces;
+﻿using TwoCardPoker.Interfaces;
 
 namespace TwoCardPoker
 {
