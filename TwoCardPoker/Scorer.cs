@@ -17,14 +17,18 @@ namespace TwoCardPoker
             {
                 var roundScore = players.Count - i;
 
+                var player = players[i];
+
+                var card1 = player.Hand.Get(0);
+                var card2 = player.Hand.Get(1);
+
                 roundResults.Add(new PlayerRoundResult {
-                    Name = players[i].Name,
-                    Hand = new List<ICard> { players[i].Hand.Get(0), players[i].Hand.Get(1) },
-                    Rank = players[i].Hand.Rank,
-                    Score = roundScore
+                    Name = player.Name,
+                    Score = roundScore,
+                    Hand = $"{card1.Value} {card1.Suit}\t{card2.Value} {card2.Suit}\t{player.Hand.Rank}",
                 });
 
-                players[i].Score += roundScore;
+                player.Score += roundScore;
             }
 
             return roundResults;

@@ -26,7 +26,7 @@ namespace TwoCardPoker
             .AddSingleton<IDealer, Dealer>()
             .AddTransient<IHand, Hand>()
             .AddSingleton<IUI, UI>()
-            .AddSingleton<IInputOutput, InputOutpu>()
+            .AddSingleton<IInputOutput, InputOutput>()
             .BuildServiceProvider();
 
             var game = serviceProvider.GetService<IGame>();

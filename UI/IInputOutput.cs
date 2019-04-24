@@ -4,5 +4,7 @@
     {
         void WriteLine(string message);
         void WriteLine();
+        void Write(string message);
+        string ReadLine();
     }
 }

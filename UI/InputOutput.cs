@@ -2,7 +2,7 @@
 
 namespace UserInterface
 {
-    public class InputOutpu : IInputOutput
+    public class InputOutput : IInputOutput
     {
         public void WriteLine(string message)
         {
@@ -12,6 +12,16 @@ namespace UserInterface
         public void WriteLine()
         {
             Console.WriteLine();
+        }
+
+        public void Write(string message)
+        {
+            Console.Write(message);
+        }
+
+        public string ReadLine()
+        {
+            return Console.ReadLine();
         }
     }
 }

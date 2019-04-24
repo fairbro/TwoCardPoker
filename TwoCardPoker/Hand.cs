@@ -32,7 +32,8 @@ namespace TwoCardPoker
 
         public Rank Rank
         {
-            get {
+            get
+            {
                 if (_rank == null)
                 {
                     _rank = GetRank();
@@ -74,7 +75,7 @@ namespace TwoCardPoker
             {
                 throw new HandOverflowException("Hand already full.");
             }
-            
+
             _cards.Add(card);
         }
 
@@ -109,7 +110,7 @@ namespace TwoCardPoker
         }
 
         public int CompareTo(IHand hand)
-                {
+        {
             var rank = (int)Rank;
             var comparisonHankRank = (int)hand.Rank;
 

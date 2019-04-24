@@ -1,5 +1,4 @@
 ﻿using Common;
-using Common.Interfaces;
 using Moq;
 using System.Collections.Generic;
 using TwoCardPoker;
@@ -26,15 +25,11 @@ namespace TwoCardPokerTests
 
             var scorer = new Scorer();
 
-            var playerRoundResults = scorer.GetRoundResults(players)[0];
+            var playerRoundResult = scorer.GetRoundResults(players)[0];
 
-            Assert.Equal("Jason Statham", playerRoundResults.Name);
-            Assert.Equal(1, playerRoundResults.Score);
-            Assert.Equal(Rank.Straight, playerRoundResults.Rank);
-            Assert.Equal(CardTypes.Suit.Hearts, playerRoundResults.Hand[0].Suit);
-            Assert.Equal(CardTypes.Value.Queen, playerRoundResults.Hand[0].Value);
-            Assert.Equal(CardTypes.Suit.Spades, playerRoundResults.Hand[1].Suit);
-            Assert.Equal(CardTypes.Value.King, playerRoundResults.Hand[1].Value);
+            Assert.Equal("Jason Statham", playerRoundResult.Name);
+            Assert.Equal(1, playerRoundResult.Score);
+            Assert.Equal("Queen Hearts\tKing Spades\tStraight", playerRoundResult.Hand);
         }
 
         [Fact]

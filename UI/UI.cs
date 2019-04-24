@@ -26,11 +26,11 @@ namespace UserInterface
         {
             while (true)
             {
-                Console.Write(message);
+                _inputOutput.Write(message);
 
                 ushort userInput;
 
-                ushort.TryParse(Console.ReadLine(), out userInput);
+                ushort.TryParse(_inputOutput.ReadLine(), out userInput);
 
                 bool validUserInput = userInput >= min && userInput <= max;
 
@@ -43,20 +43,18 @@ namespace UserInterface
 
         public void ShowRoundResults(IEnumerable<IPlayerRoundResult> roundResults, int roundNumber)
         {
-            Console.WriteLine($"Round {roundNumber}:\n");
+            _inputOutput.WriteLine($"Round {roundNumber}:\n");
 
             foreach(var roundResult in roundResults)
             {
-                Console.WriteLine($"{roundResult.Name}\t" +
+                _inputOutput.WriteLine($"{roundResult.Name}\t" +
                     $"Round Score: {roundResult.Score}\t" +
-                    $"{roundResult.Hand[0].Value} {roundResult.Hand[0].Suit}\t" +
-                    $"{roundResult.Hand[1].Value} {roundResult.Hand[1].Suit}\t" +
-                    $"{roundResult.Rank}");
+                    $"{roundResult.Hand}");
             }
 
-            Console.WriteLine("");
-            Console.WriteLine("'ENTER' to continue");
-            Console.ReadLine();
+            _inputOutput.WriteLine();
+            _inputOutput.WriteLine("'ENTER' to continue");
+            _inputOutput.ReadLine();
         }
 
         public void ShowFinalResults(IEnumerable<IPlayerFinalScore> playerResults)

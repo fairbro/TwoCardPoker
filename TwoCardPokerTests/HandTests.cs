@@ -1,7 +1,9 @@
 using Common;
+using Moq;
 using System;
 using TwoCardPoker;
 using TwoCardPoker.Exceptions;
+using TwoCardPoker.Interfaces;
 using Xunit;
 
 namespace TwoCardPokerTests

@@ -6,6 +6,5 @@ namespace TwoCardPoker.Interfaces
     {
         List<IPlayer> InitialisePlayers(ushort numberOfPlayers);
         void PlayRound(List<IPlayer> players, ushort numberOfShuffles, ushort handSize);
-        //void ShowResults();
     }
 }
