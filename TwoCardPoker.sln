@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwoCardPokerTests", "TwoCar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserInterface", "UI\UserInterface.csproj", "{1DA35EC3-F31D-445C-91DC-A4CF9071587B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{990DC67C-3E94-4837-AE19-26FB879EF50A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{990DC67C-3E94-4837-AE19-26FB879EF50A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterfaceTests", "UserInterfaceTests\UserInterfaceTests.csproj", "{9A512205-E31A-47E8-8382-B08D05FABF64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{990DC67C-3E94-4837-AE19-26FB879EF50A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{990DC67C-3E94-4837-AE19-26FB879EF50A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{990DC67C-3E94-4837-AE19-26FB879EF50A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A512205-E31A-47E8-8382-B08D05FABF64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A512205-E31A-47E8-8382-B08D05FABF64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A512205-E31A-47E8-8382-B08D05FABF64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A512205-E31A-47E8-8382-B08D05FABF64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

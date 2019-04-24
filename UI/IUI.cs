@@ -8,8 +8,6 @@ namespace UserInterface
     {
         void ShowIntro();
 
-        void ShowMessage(string message);
-
         ushort GetNumericInput(string message, ushort min, ushort max);
 
         void ShowRoundResults(IEnumerable<IPlayerRoundResult> roundResults, int roundNumber);

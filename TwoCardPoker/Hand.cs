@@ -109,7 +109,7 @@ namespace TwoCardPoker
         }
 
         public int CompareTo(IHand hand)
-        {
+                {
             var rank = (int)Rank;
             var comparisonHankRank = (int)hand.Rank;
 

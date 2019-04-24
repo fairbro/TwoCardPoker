@@ -7,17 +7,19 @@ namespace UserInterface
 {
     public class UI : IUI
     {
-        public void ShowIntro()
+        private readonly IInputOutput _inputOutput;
+
+        public UI(IInputOutput inputOutput)
         {
-            Console.WriteLine("**************************************");
-            Console.WriteLine("* Welcome to 2 Card Poker Challenge! *");
-            Console.WriteLine("**************************************");
-            Console.WriteLine();
+            _inputOutput = inputOutput;
         }
 
-        public void ShowMessage(string message)
+        public void ShowIntro()
         {
-            Console.WriteLine(message);
+            _inputOutput.WriteLine("**************************************");
+            _inputOutput.WriteLine("* Welcome to 2 Card Poker Challenge! *");
+            _inputOutput.WriteLine("**************************************");
+            _inputOutput.WriteLine();
         }
 
         public ushort GetNumericInput(string message, ushort min, ushort max)
