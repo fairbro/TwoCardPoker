@@ -154,5 +154,34 @@ namespace UserInterfaceTests
             mockConsoleWrapper.Verify(x => x.WriteLine("'ENTER' to continue"));
             mockConsoleWrapper.Verify(x => x.ReadLine());
         }
+
+        [Fact]
+        public void ShowFinalResults_DisplaysSortedResults()
+        {
+            var finalScores = new List<PlayerFinalScore>
+            {
+                new PlayerFinalScore { Name = "Player 1", Score = 9},
+                new PlayerFinalScore { Name = "Player 2", Score = 21},
+                new PlayerFinalScore { Name = "Player 3", Score = 11}
+            };
+
+            var mockConsoleWrapper = new Mock<IInputOutput>(MockBehavior.Strict);
+
+            var s = new MockSequence();
+
+            mockConsoleWrapper.InSequence(s).Setup(x => x.WriteLine("Final Results:\n"));
+            mockConsoleWrapper.InSequence(s).Setup(x => x.WriteLine("Player 2\tScore: 21"));
+            mockConsoleWrapper.InSequence(s).Setup(x => x.WriteLine("Player 3\tScore: 11"));
+            mockConsoleWrapper.InSequence(s).Setup(x => x.WriteLine("Player 1\tScore: 9"));
+
+            var ui = new UI(mockConsoleWrapper.Object);
+
+            ui.ShowFinalResults(finalScores);
+
+            mockConsoleWrapper.Verify(x => x.WriteLine("Final Results:\n"));
+            mockConsoleWrapper.Verify(x => x.WriteLine("Player 2\tScore: 21"));
+            mockConsoleWrapper.Verify(x => x.WriteLine("Player 3\tScore: 11"));
+            mockConsoleWrapper.Verify(x => x.WriteLine("Player 1\tScore: 9"));
+        }
     }
 }
